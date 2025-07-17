@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cat Meme Site</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #e4f0fb;
+      font-family: Arial, sans-serif;
+      position: relative;
+    }
+    .meme-button {
+      position: absolute;
+      background: #fff;
+      border: 2px solid #333;
+      padding: 10px;
+      cursor: pointer;
+      z-index: 10;
+      font-size: 14px;
+      transition: transform 0.2s;
+    }
+    .meme-button:hover {
+      transform: scale(1.1);
+    }
+    .meme-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 5;
+      max-width: 80vw;
+      max-height: 80vh;
+    }
+    .clippy {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: auto;
+      cursor: pointer;
+      display: none;
+      z-index: 15;
+    }
+  </style>
+</head>
+<body>
+
+  <img src="https://upload.wikimedia.org/wikipedia/en/5/5f/Microsoft_Office_Clippy.png" id="clippy" class="clippy" alt="Clippy">
+
+  <script>
+    const memeSources = [
+      'https://i.imgur.com/tCatLXt.jpg',
+      'https://i.imgur.com/VHbzBmd.jpg',
+      'https://i.imgur.com/lJSkfbC.mp4',
+      'https://i.imgur.com/3Jr2Z64.jpg',
+      'https://i.imgur.com/kq1zGpj.jpg'
+    ];
+
+    let startTime = Date.now();
+    let memeInterval = 4000;
+    let clippyShown = false;
+
+    function createButton() {
+      const btn = document.createElement('button');
+      btn.className = 'meme-button';
+      btn.textContent = 'Clicca qui!';
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 40);
+      btn.style.left = `${x}px`;
+      btn.style.top = `${y}px`;
+      btn.onclick = () => {
+        showMeme();
+      };
+      document.body.appendChild(btn);
+    }
+
+    function showMeme() {
+      const memeContainer = document.createElement('div');
+      memeContainer.className = 'meme-container';
+      const source = memeSources[Math.floor(Math.random() * memeSources.length)];
+      let element;
+      if (source.endsWith('.mp4')) {
+        element = document.createElement('video');
+        element.src = source;
+        element.autoplay = true;
+        element.loop = true;
+        element.muted = true;
+      } else {
+        element = document.createElement('img');
+        element.src = source;
+      }
+      element.style.maxWidth = '100%';
+      element.style.maxHeight = '100%';
+      memeContainer.appendChild(element);
+      document.body.appendChild(memeContainer);
+    }
+
+    setTimeout(() => {
+      createButton();
+      setInterval(() => {
+        createButton();
+        const elapsed = (Date.now() - startTime) / 1000;
+        if (elapsed >= 9 && !clippyShown) {
+          document.getElementById('clippy').style.display = 'block';
+          clippyShown = true;
+          document.getElementById('clippy').onclick = () => {
+            alert('Benvenuto nella sezione teorica. Qui andrai alla tesi.');
+          };
+        }
+      }, memeInterval);
+    }, 3000);
+  </script>
+</body>
+</html>
