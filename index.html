@@ -1,19 +1,39 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Cat Meme Site</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" type="image/x-icon" href="image/clippy.png">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/x-icon" href="image/clippy.png" />
 </head>
 <body>
-<a href="tesi.html">
-  <img src="image/clippy.png"
-       id="clippy"
-       class="clippy"
-       alt="Clippy Assistant">
-</a>
-<script src="js/script.js"></script>
+<!-- Overlay nero -->
+<div id="black-screen"></div>
+
+<div id="splash-screen">
+  <div class="splash-content">
+    <button id="start-button">Avvia il sistema</button>
+
+    <div id="logo-section" style="display: none;">
+      <img src="image/logo_gatto.png" id="logo" class="fade-in" />
+      <p id="text" class="fade-in">Avvio di <strong>Meme System</strong>...</p>
+    </div>
+  </div>
+</div>
+
+<!-- Contenuto principale del sito -->
+<div id="main-content" style="display: none;">
+  <a href="tesi.html">
+    <img src="image/clippy.png" id="clippy" class="clippy" alt="Clippy Assistant" />
+  </a>
+</div>
+
+<!-- Audio di avvio -->
+<audio id="startup-sound" src="sound/startup.mp3"></audio>
+
+<!-- Script -->
+<script src="js/startup.js"></script>
+<!-- NON CARICARE script.js qui - verrà caricato dinamicamente -->
 </body>
 </html>

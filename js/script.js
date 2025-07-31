@@ -23,8 +23,15 @@ const memeSources = [
     'https://i.pinimg.com/originals/5a/f1/0f/5af10f4a6c3b115a65d094755075f2ee.gif',
     'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhLSDsTNlS9lLWpPhiRFxcHyo4QAS6KdtacxaQWLfQremI3Zs_yk4PqK0m4-FqtpaJWHrjyTSFm_3QXsvDi_2KXdgvwmID5M048dA9vbm3p3SRM9LDOHXUyGfS2zTaK4nDllisi/s1600/monorailcat.jpg',
     'https://media.tenor.com/DFfCL02_DCcAAAAM/cat-look.gif',
-    'https://i.pinimg.com/564x/cf/ca/5b/cfca5b6f7cea1689e5ad970e265479ff.jpg',
-    'https://a.pinatafarm.com/500x500/e2f31b48e9/business-cat.jpg'
+    'https://i.pinimg.com/564x/cf/ca/5b/cfca5b6f7cea1689e5ad970e5d479ff.jpg',
+    'https://a.pinatafarm.com/500x500/e2f31b48e9/business-cat.jpg',
+    'https://media.tenor.com/BE2tstTEGEcAAAAM/reaction-meme-stan-twt.gif',
+    'https://i.pinimg.com/736x/25/c5/9b/25c59b75a14c99842477ba8a8c1847e8.jpg',
+    'https://pbs.twimg.com/media/FrO9xAFXoAEULfZ.jpg:large',
+    'https://upload-os-bbs.hoyolab.com/upload/2024/01/09/270665082/185ea2e82dbe98ad268f2815dd8c4072_2263428939097189063.jpg',
+    'https://media.tenor.com/jMDoUcPFuooAAAAM/orange-cat-bite-orange-cat.gif',
+    'https://media.tenor.com/X-5dxYa9qkwAAAAM/cat-biting.gif',
+    'https://media.tenor.com/3lUmxXk3uwoAAAAM/cat-smacking-other-cat-cat.gif',
 ];
 
 const buttonTexts = [
@@ -187,9 +194,15 @@ function createButton() {
     activeButtons.push(btn);
 }
 
+// ===== INIZIALIZZAZIONE DEL GIOCO =====
+console.log("🎮 Script principale caricato - Avvio gioco dei meme");
+
 // Primo bottone dopo 3 secondi
 setTimeout(() => {
+    console.log("🎲 Creazione primo bottone");
     createButton();
+
+    // Intervallo per creare nuovi bottoni
     const interval = setInterval(() => {
         if (activeButtons.length < 5) {
             createButton();
@@ -198,12 +211,24 @@ setTimeout(() => {
         }
     }, 3000);
 
-    // Mostra Clippy dopo 9 secondi
-    setTimeout(() => {
-        const clippy = document.getElementById('clippy');
-        if (clippy) clippy.style.display = 'block';
+}, 3000);
+
+// ===== CLIPPY: APPARE DOPO 9 SECONDI =====
+setTimeout(() => {
+    console.log("📎 Attivazione Clippy");
+    const clippy = document.getElementById('clippy');
+    if (clippy) {
+        clippy.style.display = 'block';
+        clippy.style.opacity = '1';
+        clippy.style.visibility = 'visible';
+
+        // Rendi Clippy cliccabile
         clippy.onclick = () => {
             alert("Benvenuto nella sezione teorica!");
         };
-    }, 9000);
-}, 3000);
+
+        console.log("✅ Clippy attivato e cliccabile");
+    } else {
+        console.error("❌ Elemento Clippy non trovato!");
+    }
+}, 60000); // 60 secondi dopo che script.js è stato caricato

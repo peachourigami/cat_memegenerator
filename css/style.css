@@ -517,3 +517,124 @@ body {
     color: lime !important;
     border: 2px solid lime !important;
 }
+
+#splash-screen {
+    position: fixed;
+    inset: 0;
+    background: #292626;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    font-family: Tahoma, sans-serif;
+    /* 🔴 RIMOSSA ANIMAZIONE AUTOMATICA */
+}
+
+.splash-content {
+    text-align: center;
+}
+
+.splash-content img {
+    width: 160px;
+    height: auto;
+    image-rendering: pixelated;
+    margin-bottom: 20px;
+}
+
+.splash-content p {
+    font-size: 18px;
+    color: #000080;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* Schermo nero iniziale */
+#black-screen {
+    position: fixed;
+    inset: 0;
+    background-color: black;
+    z-index: 10000;
+    animation: fadeToSplash 1s ease-out forwards;
+}
+
+@keyframes fadeToSplash {
+    from { opacity: 1; }
+    to { opacity: 0; visibility: hidden; }
+}
+
+#splash-screen {
+    position: fixed;
+    inset: 0;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 9999;
+}
+
+.splash-content {
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.splash-logo {
+    width: 120px;
+    margin-bottom: 20px;
+}
+
+#start-button {
+    padding: 12px 24px;
+    background: #1e90ff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #1e90ff;
+    font-weight: bold;
+}
+
+#start-button:hover {
+    background: #63b3ff;
+    box-shadow: 0 0 15px #63b3ff;
+}
+
+.logo-fade {
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in forwards;
+}
+
+.text-fade {
+    font-family: 'Tahoma', sans-serif;
+    font-size: 14px;
+    color: white;
+    margin-top: 10px;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to   { opacity: 0; visibility: hidden; }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in forwards;
+}
+
+.fade-out {
+    animation: fadeOut 1s ease-in-out forwards;
+}
